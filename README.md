@@ -1,2 +1,3 @@
 # ioc_parser
-Веб-приложение парсер IOC из отчетов на сайте https://thedfirreport.com
+Threat Intelligence Web Parser
+Can parse reports from https://thedfirreport.com
