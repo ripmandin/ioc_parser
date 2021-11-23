@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <title>Greeting</title>
+    </head>
+    <body>
+    <p>Parsing <a href="{{report_url}}">{{report_url}}</a> complete!</p>
+      <h3>Download:</h3>
+      <p><a href="{{ url_for('download', file=filename) }}"> Parsed report </a>
+      <p><a href="{{ url_for('download', file='iocs.yml') }}"> IOCs </a>
+    </body>
+  </html>

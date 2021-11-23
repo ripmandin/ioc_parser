@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <title>DFIR parser</title>
+      <style>
+        form {
+          width: 500px;
+        }
+        div {
+          margin-bottom: 20px;
+        }
+        label {
+          display: inline-block;
+          width: 200px;
+          text-align: left;
+          padding-right: 10px;
+        }
+        button, input {
+          float: inherit;
+        }
+        #report_url {
+          margin: 20px auto;
+          float: inherit;
+          width: 400px;
+        }
+        .flash {padding: 10px;}
+        .flash.success {
+         border: 1px solid #21DB56;
+         background: #AEFFC5;
+        }
+        .flash.error {
+         border: 1px solid #FF4343;
+         background: #FF9C9C;
+        }
+      </style>
+    </head>
+    <body>
+      <form method="post" action="{{ url_for('verify') }}">
+        <div>
+          <label for="report_url">Paste DFIR report URI from <a href="https://thedfirreport.com/" target="_blank">https://thedfirreport.com/</a></label>
+          <input name="url" id="report_url" placeholder="URI">
+          <input type="submit" value="Parse">
+        {% for cat, msg in get_flashed_messages(True) %}
+        <div class="flash {{ cat }}">{{ msg }}</div>
+        {% endfor %}
+      </form>
+    </body>
+  </html>
