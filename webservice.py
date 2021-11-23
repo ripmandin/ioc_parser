@@ -1,6 +1,10 @@
-from flask import Flask, request, render_template, send_from_directory, abort, redirect, url_for, flash, session
+import werkzeug
+from flask import Flask, request, render_template, send_from_directory, abort, redirect, url_for, flash
 import  os, re
 import dfir_file_creator
+from gevent.pywsgi import WSGIServer
+from gevent import monkey
+monkey.patch_all()
 
 
 app = Flask(__name__)
@@ -50,5 +54,16 @@ def download(file=None):
         abort(404)
 
 
+@werkzeug.serving.run_with_reloader
+def run_server():
+    app.debug = False
+    http_server = WSGIServer(('0.0.0.0', 3333), app)
+    http_server.serve_forever()
+
+
 if __name__ == "__main__":
-    app.run(debug=True, port=3000)
+    try:
+        app.config["TEMPLATES_AUTO_RELOAD"] = True
+        run_server()
+    except TypeError:
+        exit(0)
