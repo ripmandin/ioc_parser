@@ -9,4 +9,4 @@ Just:
 2) `cd ioc_parser && pip3 install -r requirements.txt`
 3) `python3 webservice.py`
 
-Your local server would be run on http://127.0.0.1:3333
+Parser would run on your local server http://127.0.0.1:3333
